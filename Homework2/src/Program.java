@@ -1,7 +1,7 @@
 /*
  * Muhammed Sheikh
  * CPSC 24500
- * 9/10/23
+ * 9/8/23
  * Purpose: Calculate the amount of paint and primer needed to paint 8 units in a apartment complex.
  */
 
@@ -23,7 +23,7 @@ public class Program {
         double primerCost = 24.49;
         int units = 8;
 
-        // Calculate Room area for one unit
+        // Calculate room area for one unit
         double totalWallArea = 2 * (longWall + narrowWall);
         double wallArea = (totalWallArea * wallHeight) - (windowWidth * windowHeight + doorWidth * doorHeight);
         double ceilingArea = longWall * narrowWall;
@@ -31,12 +31,14 @@ public class Program {
         // Calculate total area for all units
         double totalArea = units * (wallArea + ceilingArea);
 
+        // Calculate total cost
         double paintGallons = Math.ceil(totalArea / paintCoverage);
         double primerGallons = Math.ceil(totalArea / primerCoverage);
         double totalPaintCost = paintGallons * paintCost;
         double totalPrimerCost = primerGallons * primerCost;
         double totalCost = totalPaintCost + totalPrimerCost;
 
+        // Print the results
         System.out.println("**********************************************************");
         System.out.printf("Wall area per unit %10.2f%n", wallArea);
         System.out.printf("Ceiling area per unit %9.2f%n", ceilingArea);
