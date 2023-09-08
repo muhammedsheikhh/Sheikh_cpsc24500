@@ -40,9 +40,9 @@ public class Program {
 
         // Print the results
         System.out.println("**********************************************************");
-        System.out.printf("Wall area per unit %10.2f%n", wallArea);
-        System.out.printf("Ceiling area per unit %9.2f%n", ceilingArea);
-        System.out.printf("Total area to paint and prime %10.2f%n", totalArea);
+        System.out.printf("%-40s%10.2f%n","Wall area per unit ", wallArea);
+        System.out.printf("%-40s%10.2f%n","Ceiling area per unit ", ceilingArea);
+        System.out.printf("%-40s%10.2f%n","Total area to paint and prime ", totalArea);
         System.out.println();
         System.out.printf("You must purchase %d gallons of paint for $%.2f.%n", (int)paintGallons, totalPaintCost);
         System.out.printf("You must purchase %d gallons of primer for $%.2f.%n", (int)primerGallons, totalPrimerCost);
