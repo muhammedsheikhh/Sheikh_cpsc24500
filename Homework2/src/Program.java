@@ -44,10 +44,10 @@ public class Program {
         System.out.printf("%-40s%10.2f%n","Ceiling area per unit ", ceilingArea);
         System.out.printf("%-40s%10.2f%n","Total area to paint and prime ", totalArea);
         System.out.println();
-        System.out.printf("You must purchase %d gallons of paint for $%.2f.%n", (int)paintGallons, totalPaintCost);
-        System.out.printf("You must purchase %d gallons of primer for $%.2f.%n", (int)primerGallons, totalPrimerCost);
+        System.out.printf("You must purchase %d gallons of paint for $%1.2f.%n", (int)paintGallons, totalPaintCost);
+        System.out.printf("You must purchase %d gallons of primer for $%1.2f.%n", (int)primerGallons, totalPrimerCost);
         System.out.println();
-        System.out.printf("Your total cost to paint and prime all units is $%.2f.%n", totalCost );
+        System.out.printf("Your total cost to paint and prime all units is $%1.2f.%n", totalCost );
         System.out.println("**********************************************************");
 
     }
