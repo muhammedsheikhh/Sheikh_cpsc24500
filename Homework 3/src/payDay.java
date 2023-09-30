@@ -57,8 +57,6 @@ public class payDay {
             System.out.println("Prepared for " + name);
             System.out.println("Thank you for using this program");
 
-
-
         }
     }
 }
