@@ -36,10 +36,8 @@ public class TextAnalyzer {
     public static int countVowels(String text) {
         int total = 0;
         String vowels = "aeiouAEIOU";
-
         for (int i = 0; i < text.length(); i++) {
             char a = text.charAt(i);
-
             if (vowels.indexOf(a) != -1) {
                 total++;
             }
@@ -50,16 +48,15 @@ public class TextAnalyzer {
     public static int countConsonants(String text) {
         int total = 0;
         String consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ";
-
         for (int i = 0; i < text.length(); i++) {
             char a = text.charAt(i);
-
             if (consonants.indexOf(a) != -1) {
                 total++;
             }
         }
         return total;
     }
+
     public static int countWords(String text) {
         return text.split("\\s+").length;
     }
@@ -87,7 +84,6 @@ public class TextAnalyzer {
             System.out.println("Couldn't read the file.");
             return;
         }
-
         int choice;
         do {
             printMenu();
