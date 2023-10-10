@@ -1,7 +1,0 @@
-(a)Impact on Mean Weight:
-
-When a constant value (such as 35g) is added to each score (or data point) in a data set, the mean will increase by that constant value. So, the mean weight of the packages will increase by 35g.
-
-(b) Effect on Standard Deviation:
-
-The standard deviation measures the amount of variation or dispersion of a set of values. Adding or subtracting a constant from every value in the data set does not change how spread out the values are relative to the mean. So, if you add 35g to each package, the standard deviation will not change.

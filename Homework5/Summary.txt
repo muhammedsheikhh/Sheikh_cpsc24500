@@ -1,0 +1,3 @@
+Vowels: 140
+Consonants: 223
+Words: 90
