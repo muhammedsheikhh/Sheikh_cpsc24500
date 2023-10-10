@@ -3,6 +3,11 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class TextAnalyzer {
+    /**
+     * TextAnalyzer provides functionalities for analyzing text from a file.
+     * Users can count vowels, consonants, words, and write summary to a file.
+     */
+
     public static void printWelcome() {
         System.out.println("*" .repeat(75));
         System.out.println(" " .repeat(22) + " Welcome to TextAnalyzer V1.0");
@@ -73,6 +78,10 @@ public class TextAnalyzer {
         }
     }
 
+    /**
+     * Drives the TextAnalyzer program, enabling user interactions
+     * and text analysis functionality.
+     */
     public static void main(String[] args) {
         printWelcome();
         Scanner sc = new Scanner(System.in);
