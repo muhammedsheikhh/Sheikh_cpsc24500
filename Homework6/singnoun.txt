@@ -1,0 +1,10 @@
+house
+mouse
+cat
+dog
+peasant
+tree
+tiger
+missile
+pilot
+destiny

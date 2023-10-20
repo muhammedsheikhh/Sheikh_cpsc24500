@@ -24,6 +24,7 @@ public class TextAnalyzer {
         System.out.println("5. Quit ");
         System.out.print("Enter the number of your choice:");
     }
+
     public static String readFile(String fname) {
         try {
             String result = "";
