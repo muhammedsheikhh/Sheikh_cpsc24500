@@ -8,6 +8,7 @@ public class TextAnalyzer {
      * Users can count vowels, consonants, words, and write summary to a file.
      */
 
+    // print welcome message
     public static void printWelcome() {
         System.out.println("*" .repeat(75));
         System.out.println(" " .repeat(22) + " Welcome to TextAnalyzer V1.0");
