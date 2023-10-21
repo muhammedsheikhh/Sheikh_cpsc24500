@@ -45,11 +45,12 @@ public class Madlibs {
     public static String getDirectoryPath(Scanner sc) {
         String directory = sc.nextLine().trim();
         if (directory.isEmpty()) {
-            directory = "/Users/mac/Desktop/Homework6"; // Default directory
+            directory = "."; // Default to the current directory
         }
-        if (!directory.endsWith("/")) {
-            directory += "/"; // Ensure directory path ends with a forward slash
-        }
+        // The following lines are not needed anymore since File constructor will handle the path separator
+        //if (!directory.endsWith(File.separator)) {
+        //    directory += File.separator; // Ensure directory path ends with the correct separator
+        //}
         return directory;
     }
 
@@ -61,13 +62,13 @@ public class Madlibs {
      */
     public static boolean loadWordLists(String directory) {
         try {
-            loadWordList(directory + "adj.txt", adjectives);
-            loadWordList(directory + "singnoun.txt", singNouns);
-            loadWordList(directory + "adv.txt", adverbs);
-            loadWordList(directory + "pastverb.txt", pastVerbs);
-            loadWordList(directory + "plunoun.txt", pluNouns);
-            loadWordList(directory + "pluverb.txt", pluVerbs);
-            loadWordList(directory + "singverb.txt", sinVerbs);
+            loadWordList(new File(directory, "adj.txt"), adjectives);
+            loadWordList(new File(directory, "singnoun.txt"), singNouns);
+            loadWordList(new File(directory, "adv.txt"), adverbs);
+            loadWordList(new File(directory, "pastverb.txt"), pastVerbs);
+            loadWordList(new File(directory, "plunoun.txt"), pluNouns);
+            loadWordList(new File(directory, "pluverb.txt"), pluVerbs);
+            loadWordList(new File(directory, "singverb.txt"), sinVerbs);
             return true;
         } catch (Exception ex) {
             System.out.println("Could not read the wordlist files.");
@@ -89,7 +90,7 @@ public class Madlibs {
             System.out.print("Enter a story number or q to quit: ");
             choice = sc.nextLine().trim();
             if (!choice.equalsIgnoreCase("q")) {
-                String storyContent = readStoryFile(directory + "story" + choice + ".txt");
+                String storyContent = readStoryFile(new File(directory, "story" + choice + ".txt"));
                 if (storyContent != null) {
                     System.out.println("\nHere's your Madlib:\n");
                     System.out.println(replacePlaceholdersInStory(storyContent));
@@ -103,13 +104,13 @@ public class Madlibs {
     /**
      * Reads the content of the provided story file.
      *
-     * @param filename The path of the story file to be read.
+     * @param file The file object representing the story file to be read.
      * @return The content of the story file as a single string, or null if the file could not be read.
      */
-    public static String readStoryFile(String filename) {
+    public static String readStoryFile(File file) {
         StringBuilder story = new StringBuilder();
         try {
-            Scanner fileScanner = new Scanner(new File(filename));
+            Scanner fileScanner = new Scanner(file);
             while (fileScanner.hasNext()) {
                 story.append(fileScanner.next()).append(" ");
             }
@@ -180,12 +181,12 @@ public class Madlibs {
     /**
      * Loads words from a file into a list.
      *
-     * @param filename The file containing the words.
+     * @param file The file object containing the words.
      * @param list The list to populate with words.
      */
-    public static void loadWordList(String filename, ArrayList<String> list) {
+    public static void loadWordList(File file, ArrayList<String> list) {
         try {
-            Scanner fileScanner = new Scanner(new File(filename));
+            Scanner fileScanner = new Scanner(file);
             while (fileScanner.hasNext()) {
                 String word = fileScanner.nextLine().trim();
                 if (!word.isEmpty()) {
@@ -194,7 +195,7 @@ public class Madlibs {
             }
             fileScanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Error reading wordlist file: " + filename);
+            System.out.println("Error reading wordlist file: " + file.getName());
         }
     }
 
