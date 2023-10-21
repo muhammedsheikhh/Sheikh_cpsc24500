@@ -47,10 +47,7 @@ public class Madlibs {
         if (directory.isEmpty()) {
             directory = "."; // Default to the current directory
         }
-        // The following lines are not needed anymore since File constructor will handle the path separator
-        //if (!directory.endsWith(File.separator)) {
-        //    directory += File.separator; // Ensure directory path ends with the correct separator
-        //}
+       
         return directory;
     }
 
