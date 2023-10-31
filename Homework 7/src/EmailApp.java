@@ -2,9 +2,17 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A simple Email Application to manage and send emails.
+ */
 public class EmailApp {
+
+    /** List of Email objects to manage within the application. */
     private static List<Email> emails = new ArrayList<>();
 
+    /**
+     * Prints a welcome message to the console when the application is started.
+     */
     public static void printWelcome() {
         System.out.println("*" .repeat(75));
         System.out.println(" " .repeat(24) + "  Emailer Version 1.0 ");
@@ -12,6 +20,9 @@ public class EmailApp {
         System.out.println();
     }
 
+    /**
+     * Prints a menu of available actions to the console.
+     */
     public static void printMenu() {
         System.out.println("Here are your choices:");
         System.out.println("1. Write email");
@@ -23,6 +34,11 @@ public class EmailApp {
         System.out.print("Enter the number of your choice: ");
     }
 
+    /**
+     * The main method to start the Email application.
+     *
+     * @param args The command line arguments
+     */
     public static void main(String[] args) {
         printWelcome();
         Scanner sc = new Scanner(System.in);
@@ -63,7 +79,12 @@ public class EmailApp {
         } while (choice != 5);
     }
 
-
+    /**
+     * Prompts the user to enter details for a new email and returns the constructed Email object.
+     *
+     * @param sc Scanner object to read user input
+     * @return The constructed Email object
+     */
     private static Email writeEmail(Scanner sc) {
         Email email = new Email();
 

@@ -4,8 +4,16 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.PrintWriter;
 
-// View Class
+/**
+ * Utility class for writing emails to the screen or to a file.
+ */
 public class EmailWriter {
+
+    /**
+     * Prints the details of a list of emails to the console.
+     *
+     * @param emails List of emails to be printed to the console
+     */
     public static void writeToScreen(ArrayList<Email> emails) {
         System.out.println("Here are your emails:");
         for (Email email : emails) {
@@ -19,6 +27,13 @@ public class EmailWriter {
         }
     }
 
+    /**
+     * Writes a list of emails to a file.
+     *
+     * @param emails List of emails to be written to the file
+     * @param fname Name of the file to which the emails will be written
+     * @return true if the emails were successfully written to the file, false otherwise
+     */
     public static boolean writeToFile(ArrayList<Email> emails, String fname) {
         try {
             PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(new File(fname))));
