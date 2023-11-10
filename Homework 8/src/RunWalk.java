@@ -1,6 +1,5 @@
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 public class RunWalk extends Exercise {
     private double distance; // in miles
@@ -8,6 +7,11 @@ public class RunWalk extends Exercise {
     public RunWalk(String name, String date, int duration, double distance) throws ParseException {
         super(name, date, duration);
         this.distance = distance;
+    }
+
+    @Override
+    protected String getExerciseType() {
+        return "run/walk";
     }
 
     @Override

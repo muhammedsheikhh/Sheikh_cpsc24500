@@ -6,6 +6,7 @@ public abstract class Exercise implements Comparable<Exercise> {
     private String name;
     private Date date;
     private int duration; // Duration in minutes
+    private String comment; // New field for comment
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
@@ -13,7 +14,7 @@ public abstract class Exercise implements Comparable<Exercise> {
         this.name = name;
         this.date = sdf.parse(dateString);
         this.duration = duration;
-
+        this.comment = ""; // Initialize comment as empty
     }
 
     public String getName() {
@@ -28,8 +29,17 @@ public abstract class Exercise implements Comparable<Exercise> {
         return duration;
     }
 
-    public abstract double calculateCalories();
+    protected abstract String getExerciseType();
 
+    public void setComment(String comment) {
+        this.comment = comment; // Setter for comment
+    }
+
+    public String getComment() {
+        return comment; // Getter for comment
+    }
+
+    public abstract double calculateCalories();
 
     @Override
     public int compareTo(Exercise other) {
@@ -38,8 +48,8 @@ public abstract class Exercise implements Comparable<Exercise> {
 
     @Override
     public String toString() {
-        return String.format("%s on %s for %d minutes", name, sdf.format(date), duration);
+        // Use getExerciseType() to get the type for the toString representation.
+        return String.format("%s     %s     %s      %s ",
+                getExerciseType(), getName(), sdf.format(getDate()), calculateCalories());
     }
-
-
 }

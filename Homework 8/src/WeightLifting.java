@@ -8,6 +8,10 @@ public class WeightLifting extends Exercise {
         this.weight = weight;
     }
 
+    @Override
+    protected String getExerciseType() {
+        return "weightlifting";
+    }
     // Specific implementation of calculateCalories for WeightLifting
     @Override
     public double calculateCalories() {
