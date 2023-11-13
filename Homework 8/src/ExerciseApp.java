@@ -1,15 +1,19 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * The ExerciseApp class provides a command-line interface for managing a list of exercises.
+ * It allows users to add new exercises, print exercises to a file, and list exercises sorted by date or calories.
+ */
 public class ExerciseApp {
     private static final Scanner scanner = new Scanner(System.in);
     private static final ArrayList<Exercise> exercises = new ArrayList<>();
 
+    /**
+     * Prints a welcome message to the console when the application starts.
+     */
     public static void printWelcome() {
         System.out.println("*" .repeat(75));
         System.out.println(" " .repeat(24) + "  EXERCISE TRACKER V1.0 ");
@@ -17,6 +21,9 @@ public class ExerciseApp {
         System.out.println();
     }
 
+    /**
+     * Prints the main menu options to the console.
+     */
     public static void printMenu() {
         System.out.println("These are your choices:");
         System.out.println("1. Add an exercise");
@@ -27,6 +34,12 @@ public class ExerciseApp {
         System.out.print("Enter the number of your choice: ");
     }
 
+    /**
+     * The main method that serves as the entry point for the application.
+     * It provides a loop for the user to interact with the main menu.
+     *
+     * @param args the command-line arguments.
+     */
     public static void main(String[] args) {
         printWelcome();
         int choice;
@@ -62,13 +75,16 @@ public class ExerciseApp {
         scanner.close();
     }
 
+    /**
+     * Handles the addition of a new exercise to the tracker.
+     * Prompts the user for exercise details and adds the exercise to the list.
+     */
     private static void addExercise() {
         System.out.println("Describe your workout:");
         System.out.print("Enter R for run/walk, W for weightlifting, or C for rock climbing: ");
         char type = scanner.next().charAt(0);
-        scanner.nextLine(); // Consume the newline
+        scanner.nextLine();
 
-        // Set a default name based on the type of exercise if none is provided
         String defaultName = "";
         switch (Character.toUpperCase(type)) {
             case 'R':
@@ -96,7 +112,7 @@ public class ExerciseApp {
 
         System.out.print("How long did you work out in minutes: ");
         int duration = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline after integer input
+        scanner.nextLine(); 
 
         Exercise exercise = null;
 
@@ -104,19 +120,19 @@ public class ExerciseApp {
             if (Character.toUpperCase(type) == 'R') {
                 System.out.print("Enter distance you ran or walked in miles: ");
                 double distance = scanner.nextDouble();
-                scanner.nextLine(); // Consume the newline
+                scanner.nextLine();
                 exercise = new RunWalk(name, dateStr, duration, distance);
             } else if (Character.toUpperCase(type) == 'W') {
                 System.out.print("Enter total weight lifted in pounds: ");
                 int weight = scanner.nextInt();
-                scanner.nextLine(); // Consume the newline
+                scanner.nextLine();
                 exercise = new WeightLifting(name, dateStr, duration, weight);
             } else if (Character.toUpperCase(type) == 'C') {
                 System.out.print("Enter the height of the wall in feet: ");
                 double height = scanner.nextDouble();
                 System.out.print("Enter number of times you climbed it: ");
                 int repetitions = scanner.nextInt();
-                scanner.nextLine(); // Consume the newline
+                scanner.nextLine();
                 exercise = new RockClimbing(name, dateStr, duration, height, repetitions);
             }
 
@@ -133,37 +149,34 @@ public class ExerciseApp {
         }
     }
 
+    /**
+     * Prompts the user for a filename and writes the list of exercises to that file.
+     */
     private static void printExercisesToFile() {
         System.out.print("Enter the name of the file to save: ");
         String filename = scanner.nextLine();
-
-        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(filename)))) {
-            for (Exercise exercise : exercises) {
-                out.println(exercise);
-            }
-            System.out.println("Exercises saved to file.");
-        } catch (Exception e) {
-            System.out.println("An error occurred while writing to the file.");
-        }
+        ExerciseWriter.writeToFile(filename, exercises);
     }
 
+    /**
+     * Lists all exercises sorted by the date they were performed.
+     */
     private static void listExercisesSortedByDate() {
-        // Sort the exercises by date
         Collections.sort(exercises);
         System.out.println("Here are the exercises sorted by date:");
         for (Exercise ex : exercises) {
-            System.out.println(ex.toString()); // Use the Exercise's overridden toString() method
+            System.out.println(ex.toString());
         }
     }
 
+    /**
+     * Lists all exercises sorted by the calories burned.
+     */
     private static void listExercisesSortedByCalories() {
-        // Sort the exercises by calories using ExerciseComparator
         exercises.sort(new ExerciseComparator());
-
-        // Output the sorted list
         System.out.println("Here are the exercises sorted by calories burned:");
         for (Exercise ex : exercises) {
-            System.out.println(ex); // This uses the toString method of the Exercise object
+            System.out.println(ex);
         }
     }
 

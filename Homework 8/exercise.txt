@@ -1,0 +1,4 @@
+rock climbing     climbing     11/12/2023      545.4545454545454 
+weightlifting     shoulder press     11/09/2023      562.5 
+run/walk     running     11/10/2023      9000.0 
+run/walk     bvkjebfkvje     11/24/2023      9000.0 
