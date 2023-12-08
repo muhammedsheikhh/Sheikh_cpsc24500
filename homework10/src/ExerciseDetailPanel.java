@@ -6,9 +6,9 @@ import java.awt.BorderLayout;
 import javax.swing.JTextArea;
 import javax.swing.*;
 
-/*
- * This is the panel that occupies the west side of our frame
- * entries for Name, Date, Duration, Distance and comment
+/**
+ * This class represents a panel for entering and displaying details of an exercise.
+ * It contains text fields for name, date, duration, distance, and a text area for comments.
  */
 public class ExerciseDetailPanel extends JPanel {
     private JTextField txtName;
@@ -17,10 +17,18 @@ public class ExerciseDetailPanel extends JPanel {
     private JTextField txtDistance;
     private JTextArea tarComment;
 
+    /**
+     * Constructor for ExerciseDetailPanel.
+     * Calls the method to set up the user interface components.
+     */
     public ExerciseDetailPanel() {
         setupGUI();
     }
 
+    /**
+     * Sets up the graphical user interface of the panel.
+     * This method initializes and arranges the text fields and text area components.
+     */
     public void setupGUI() {
         setLayout(new BorderLayout());
         JPanel panNorth = new JPanel();
@@ -54,14 +62,30 @@ public class ExerciseDetailPanel extends JPanel {
         add(panComment, BorderLayout.CENTER);
     }
 
+    /**
+     * Retrieves the name entered in the name text field.
+     *
+     * @return String containing the entered name.
+     */
     public String getName() {
         return txtName.getText();
     }
 
+    /**
+     * Retrieves the date entered in the date text field.
+     *
+     * @return String containing the entered date.
+     */
     public String getDate() {
         return txtDate.getText();
     }
 
+    /**
+     * Retrieves the duration entered in the duration text field.
+     * Displays a message dialog if the entered duration is not a valid number.
+     *
+     * @return The duration as an integer. Returns 0 if the entered value is invalid.
+     */
     public int getDuration() {
         try {
             return Integer.parseInt(txtDuration.getText());
@@ -71,6 +95,12 @@ public class ExerciseDetailPanel extends JPanel {
         }
     }
 
+    /**
+     * Retrieves the distance entered in the distance text field.
+     * Displays a message dialog if the entered distance is not a valid number.
+     *
+     * @return The distance as a double. Returns 0.0 if the entered value is invalid.
+     */
     public double getDistance() {
         try {
             return Double.parseDouble(txtDistance.getText());
@@ -80,10 +110,18 @@ public class ExerciseDetailPanel extends JPanel {
         }
     }
 
+    /**
+     * Retrieves the comment entered in the comment text area.
+     *
+     * @return String containing the entered comment.
+     */
     public String getComment() {
         return tarComment.getText();
     }
 
+    /**
+     * Clears all entries in the text fields and the text area.
+     */
     public void clearEntries() {
         txtName.setText("");
         txtDate.setText("");
@@ -92,6 +130,11 @@ public class ExerciseDetailPanel extends JPanel {
         tarComment.setText("");
     }
 
+    /**
+     * Enables or disables all input components in the panel.
+     *
+     * @param enabledYN Boolean indicating whether to enable (true) or disable (false) the components.
+     */
     public void enableEntries(boolean enabledYN) {
         txtName.setEnabled(enabledYN);
         txtDate.setEnabled(enabledYN);

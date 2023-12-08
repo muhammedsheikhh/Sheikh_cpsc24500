@@ -14,11 +14,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JFileChooser;
 import java.io.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-
-
+/**
+ * This class represents the main frame of the Exercise Tracker application.
+ * It includes menu items, detail panels, and controls for managing exercises.
+ */
 public class MainFrame extends JFrame implements ActionListener {
     private ArrayList<Exercise> exercises;
     private JMenuItem miAbout;
@@ -30,12 +30,21 @@ public class MainFrame extends JFrame implements ActionListener {
     private SummaryPanel summaryPanel;
     private JButton btnAddExercise;
 
+    /**
+     * Constructor for MainFrame.
+     * Initializes the frame with a list of exercises and sets up the GUI and menu.
+     *
+     * @param exercises An ArrayList of Exercise objects to be managed.
+     */
     public MainFrame(ArrayList<Exercise> exercises) {
         this.exercises = exercises;
         setupGUI();
         setupMenu();
     }
 
+    /**
+     * Sets up the menu bar with various menu items.
+     */
     private void setupMenu() {
         JMenuBar mbar = new JMenuBar();
         setJMenuBar(mbar);
@@ -66,6 +75,10 @@ public class MainFrame extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * Sets up the graphical user interface of the main frame.
+     * This method initializes the layout, panels, and buttons.
+     */
     private void setupGUI() {
         setBounds(100,100,700,500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -88,6 +101,12 @@ public class MainFrame extends JFrame implements ActionListener {
         enableEntries(false); // disables all the entries at the start
     }
 
+    /**
+     * Handles action events triggered by menu items and buttons.
+     * Overrides the actionPerformed method from the ActionListener interface.
+     *
+     * @param e The ActionEvent object containing details about the event.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == miAbout) {
@@ -105,6 +124,10 @@ public class MainFrame extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Performs actions related to the login process.
+     * Opens the login form and enables entries if login is successful.
+     */
     private void performLogin() {
         LoginForm loginForm = new LoginForm(this);
         loginForm.setVisible(true);
@@ -115,12 +138,20 @@ public class MainFrame extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Performs actions related to the logout process.
+     * Disables entries and updates the menu item states.
+     */
     private void performLogout() {
         enableEntries(false);
         miLogin.setEnabled(true);
         miLogout.setEnabled(false);
     }
 
+    /**
+     * Performs actions to save the current state of exercises to a file.
+     * Opens a file chooser and writes data using ExerciseWriter.
+     */
     private void performSave() {
         JFileChooser fileChooser = new JFileChooser();
         if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -133,7 +164,10 @@ public class MainFrame extends JFrame implements ActionListener {
         }
     }
 
-
+    /**
+     * Adds a new exercise to the list based on the inputs from the detail panel.
+     * Validates inputs and updates the summary panel.
+     */
     private void addNewExercise() {
         try {
             String name = exerciseDetailPanel.getName();
@@ -151,9 +185,11 @@ public class MainFrame extends JFrame implements ActionListener {
         }
     }
 
-
-
-
+    /**
+     * Enables or disables input fields and the add exercise button.
+     *
+     * @param enableYN Boolean indicating whether to enable (true) or disable (false) the components.
+     */
     private void enableEntries(boolean enableYN) {
         exerciseDetailPanel.enableEntries(enableYN);
         btnAddExercise.setEnabled(enableYN);

@@ -11,22 +11,33 @@ import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.Dimension;
 
-
-
+/**
+ * A class representing a login form as a dialog.
+ * This form allows the user to enter a username and password.
+ */
 public class LoginForm extends JDialog {
     private JTextField txtUsername;
     private boolean loggedIn; // Flag to indicate if the user is logged in
     private String password; // The password to check against
     private JPasswordField txtPassword; // Field where user enters the password
 
-
+    /**
+     * Constructs a LoginForm attached to a parent JFrame.
+     * Initializes the GUI components and sets the correct password.
+     *
+     * @param owner The parent JFrame to which this dialog is attached.
+     */
     public LoginForm(JFrame owner) {
         super(owner, "Login", true); // Call to super, setting the dialog as modal
         setupGUI();
-        password = "exercise"; // The correct password, replace with your desired password
+        password = "donuts"; // The correct password, replace with your desired password
         loggedIn = false; // Initially, the user is not logged in
     }
 
+    /**
+     * Sets up the graphical user interface for the login form.
+     * This includes layout and component initialization.
+     */
     private void setupGUI() {
         // Set the title of the dialog
         setTitle("Please log in");
@@ -70,7 +81,10 @@ public class LoginForm extends JDialog {
         setResizable(false); // Prevent resizing
     }
 
-
+    /**
+     * Attempts to log the user in by checking the entered username and password.
+     * Sets the loggedIn flag and hides the dialog if successful, or shows an error message otherwise.
+     */
     private void attemptLogin() {
         if (checkPassword()) {
             loggedIn = true;
@@ -82,19 +96,33 @@ public class LoginForm extends JDialog {
         }
     }
 
+    /**
+     * Cancels the login process.
+     * Sets the loggedIn flag to false and hides the dialog.
+     */
     private void cancelLogin() {
         loggedIn = false;
         setVisible(false); // Hide the dialog if the user cancels
     }
 
+    /**
+     * Checks if the entered username and password are correct.
+     *
+     * @return boolean True if the entered credentials match the expected values, false otherwise.
+     */
     private boolean checkPassword() {
         String enteredUsername = txtUsername.getText();
         String enteredPassword = new String(txtPassword.getPassword());
-        return enteredUsername.equals("test") && enteredPassword.equals(password);
+        return enteredUsername.equals("healthy") && enteredPassword.equals(password);
     }
+
+    /**
+     * Checks if the entered username and password are correct.
+     *
+     * @return boolean True if the entered credentials match the expected values, false otherwise.
+     */
     public boolean isLoggedIn() {
         return loggedIn;
     }
-
 
 }
