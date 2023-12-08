@@ -66,7 +66,7 @@ public abstract class Exercise implements Comparable<Exercise> {
      * @return a string representing the specific type of exercise.
      */
     protected abstract String getExerciseType();
-/**
+    /**
      * Sets a comment for the exercise.
      *
      * @param comment a string containing comments about the exercise.
@@ -110,9 +110,12 @@ public abstract class Exercise implements Comparable<Exercise> {
      *
      * @return a string representation of the exercise.
      */
+
+
     @Override
     public String toString() {
         return String.format("%s     %s     %s      %s ",
-                getExerciseType(), getName(), sdf.format(getDate()), calculateCalories());
+                getName(), getExerciseType(), sdf.format(getDate()), calculateCalories());
     }
 }
+
